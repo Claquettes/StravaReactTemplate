@@ -1,29 +1,27 @@
-import React, { useEffect } from 'react';
-import { useAthlete } from './AthleteContext';
+import React, {useEffect} from 'react';
+import {useAthlete} from './AthleteContext';
+import {StravaActivity} from "./models/StravaActivity.model.ts";
 
-async function getAllActivities(token) {
+async function getAllActivities(token): Promise<StravaActivity[]> {
     let page = 1;
     const perPage = 200;
-    let allActivities = [];
+    let allActivities: StravaActivity[] = [];
 
     while (true) {
         const url = `https://www.strava.com/api/v3/athlete/activities?access_token=${token}&per_page=${perPage}&page=${page}`;
         const response = await fetch(url);
-        const activities = await response.json();
-
+        const activities: StravaActivity[] = await response.json();
         if (activities.length === 0) {
             break;
         }
-
         allActivities = allActivities.concat(activities);
         page++;
     }
-
     return allActivities;
 }
 
 function CallbackComponent() {
-    const { setAthlete } = useAthlete();
+    const {setAthlete, setActivities, setIsFetchingActivities} = useAthlete();
 
     useEffect(() => {
         const urlParams = new URLSearchParams(window.location.search);
@@ -52,35 +50,39 @@ function CallbackComponent() {
                     grant_type: 'authorization_code'
                 })
             })
-            .then(response => response.json())
-            .then(async data => {
-                if (data.access_token) {
-                    fetch('https://www.strava.com/api/v3/athlete', {
-                        headers: {
-                            Authorization: `Bearer ${data.access_token}`
-                        }
-                    })
-                    .then(response => response.json())
-                    .then(athlete => {
-                        setAthlete(athlete);
-                        console.log('Athlete information:', athlete);
-                    })
-                    .catch(error => console.error('Error fetching athlete information:', error));
+                .then(response => response.json())
+                .then(async data => {
+                    if (data.access_token) {
+                        fetch('https://www.strava.com/api/v3/athlete', {
+                            headers: {
+                                Authorization: `Bearer ${data.access_token}`
+                            }
+                        })
+                            .then(response => response.json())
+                            .then(athlete => {
+                                setAthlete(athlete);
+                                console.log('Athlete information:', athlete);
+                            })
+                            .catch(error => console.error('Error fetching athlete information:', error));
 
-                    // Fetch all activities
-                    getAllActivities(data.access_token)
-                    .then(allActivities => {
-                        console.log('All activities:', allActivities);
-
-                    })
-                    .catch(error => console.error('Error fetching all activities:', error));
-                } else {
-                    console.error('Error: No access token received');
-                }
-            })
-            .catch(error => console.error('Error exchanging code for token:', error));
+                        setIsFetchingActivities(true);
+                        getAllActivities(data.access_token)
+                            .then(allActivities => {
+                                console.log('All activities:', allActivities);
+                                setActivities(allActivities);
+                                setIsFetchingActivities(false);
+                            })
+                            .catch(error => {
+                                console.error('Error fetching all activities:', error);
+                                setIsFetchingActivities(false);
+                            });
+                    } else {
+                        console.error('Error: No access token received');
+                    }
+                })
+                .catch(error => console.error('Error exchanging code for token:', error));
         }
-    }, [setAthlete]);
+    }, [setAthlete, setActivities]);
 
     return (
         <div>
