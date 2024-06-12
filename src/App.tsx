@@ -34,7 +34,9 @@ function App() {
                     <h3>Activities</h3>
                     <div>
                         {isFetchingActivities &&
-                            <p>Activity fetching is still in progress, it can take up to 2 minutes.</p>}
+                            <p>Activity fetching is still in progress, it can take up to 2 minutes.</p>
+                        }
+                        <h3>We found {activities.length} activities</h3>
                         {activities && activities.map(activity => (
                             <li key={activity.id}>{activity.name}</li>
                         ))}
