@@ -10,7 +10,7 @@ function App() {
 
     let client_id = import.meta.env.VITE_CLIENT_ID;
     if (!client_id) {
-        client_id = process.env.VITE_CLIENT_ID;
+        client_id = process.env.CLIENT_ID;
     }
 
     const handleStravaConnect = () => {
@@ -21,7 +21,7 @@ function App() {
         <div>
             {!athlete && (
                 <>
-                    <h1>Cardio Quest</h1>
+                    <h1>Template Strava App</h1>
                     <h3>To get started, connect to Strava</h3>
                     <button onClick={handleStravaConnect}>Connect to Strava</button>
                     <p>Only your activities will be accessed, no other data will be read or modified.</p>

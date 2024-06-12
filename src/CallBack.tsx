@@ -32,9 +32,9 @@ function CallbackComponent() {
         let refresh_token = import.meta.env.VITE_REFRESH_TOKEN;
 
         if (!client_id || !client_secret) {
-            client_id = process.env.VITE_CLIENT_ID;
-            client_secret = process.env.VITE_CLIENT_SECRET;
-            refresh_token = process.env.VITE_REFRESH_TOKEN;
+            client_id = process.env.CLIENT_ID;
+            client_secret = process.env.CLIENT_SECRET;
+            refresh_token = process.env.REFRESH_TOKEN;
         }
 
         if (code) {
