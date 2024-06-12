@@ -13,10 +13,11 @@ function App() {
         client_id = process.env.VITE_CLIENT_ID;
     }
 
-    const handleStravaConnect = () => {
-        // Redirect user to Strava's authorization endpoint
-        window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=${window.location.origin}/callback&response_type=code&scope=read_all`;
-    };
+const handleStravaConnect = () => {
+    // Redirect user to Strava's authorization endpoint
+    window.location.href = `https://www.strava.com/oauth/authorize?client_id=${client_id}&redirect_uri=${window.location.origin}/callback&response_type=code&scope=read_all,activity:read`;
+};
+
 
     return (
         <div>
