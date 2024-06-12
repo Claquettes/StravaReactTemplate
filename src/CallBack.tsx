@@ -86,7 +86,7 @@ function CallbackComponent() {
 
     return (
         <div>
-            <h2>Callback</h2>
+
         </div>
     );
 }

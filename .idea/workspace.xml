@@ -4,10 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="26984afe-02d9-4cc4-9ac5-e0ecc33ee111" name="Changes" comment="feat(actitivites)fetches raw activities">
+    <list default="true" id="26984afe-02d9-4cc4-9ac5-e0ecc33ee111" name="Changes" comment="feat(actitivites): creates an array of StravaActivity in the context provider and is displayed by the app">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AthleteContext.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/AthleteContext.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CallBack.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/CallBack.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +109,15 @@
       <option name="project" value="LOCAL" />
       <updated>1718200932190</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat(actitivites): creates an array of StravaActivity in the context provider and is displayed by the app">
+      <option name="closed" value="true" />
+      <created>1718202851572</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1718202851572</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -122,6 +129,7 @@
     <MESSAGE value="feat(data): added profile and activity model" />
     <MESSAGE value="feat(profile): fetch the profile of the user and dispay the results" />
     <MESSAGE value="feat(actitivites)fetches raw activities" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat(actitivites)fetches raw activities" />
+    <MESSAGE value="feat(actitivites): creates an array of StravaActivity in the context provider and is displayed by the app" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat(actitivites): creates an array of StravaActivity in the context provider and is displayed by the app" />
   </component>
 </project>

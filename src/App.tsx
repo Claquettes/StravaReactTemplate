@@ -21,8 +21,10 @@ function App() {
         <div>
             {!athlete && (
                 <>
-                    <h2>Connect to Strava using the button below</h2>
+                    <h1>Cardio Quest</h1>
+                    <h3>To get started, connect to Strava</h3>
                     <button onClick={handleStravaConnect}>Connect to Strava</button>
+                    <p>Only your activities will be accessed, no other data will be read or modified.</p>
                 </>
             )}
             {error && <p>{error}</p>}
