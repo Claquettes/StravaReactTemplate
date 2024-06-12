@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import './App.css';
 import { useAthlete } from './AthleteContext';
+import {ProfileType} from "./models/Profile.model.ts";
 
 function App() {
     const [error, setError] = useState(null);
@@ -11,9 +12,6 @@ function App() {
     if(!client_id) { // If Vite environment variables are not available, use Node environment variables
         client_id = process.env.VITE_CLIENT_ID;
     }
-
-
-
 
     const handleStravaConnect = () => {
         // Redirect user to Strava's authorization endpoint
@@ -27,11 +25,13 @@ function App() {
             {error && <p>{error}</p>}
             {athlete && (
                 <div>
-                    <h3>Athlete Information:</h3>
-                    <p>Name: {athlete.firstname} {athlete.lastname}</p>
-                    <p>City: {athlete.city}</p>
-                    <p>State: {athlete.state}</p>
-                    <p>Country: {athlete.country}</p>
+                    //we display all of the infos of the athlete (of type ProfileType)
+                    {Object.entries(athlete).map(([key, value]) => (
+                        <p key={key}>
+                            <strong>{key}:</strong> {value}
+                        </p>
+                    ))}
+
                 </div>
             )}
         </div>
